@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CBMMA Saúde | Meu Checklist</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--tx:#12203a;--mut:#5d6b84;--bd:#dde4ef;--navy:#0b2447;--blue:#1d6fd8;--bl:#e8f1fd;--ok:#12805c;--okb:#e2f5ec;--wn:#9a6200;--wnb:#fff4d6;--bad:#c0262d;--badb:#fde8e9;--gr:#eef1f6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1424;--card:#141f36;--tx:#e8eefb;--mut:#93a3c1;--bd:#263353;--navy:#0a1730;--blue:#5aa2ff;--bl:#172a4a;--ok:#4cd39b;--okb:#10332a;--wn:#f2c14e;--wnb:#3a2f10;--bad:#ff7a80;--badb:#3d1a1e;--gr:#1b2742;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c1424;--card:#141f36;--tx:#e8eefb;--mut:#93a3c1;--bd:#263353;--navy:#0a1730;--blue:#5aa2ff;--bl:#172a4a;--ok:#4cd39b;--okb:#10332a;--wn:#f2c14e;--wnb:#3a2f10;--bad:#ff7a80;--badb:#3d1a1e;--gr:#1b2742;color-scheme:dark}
+html,body{height:auto}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--navy);color:#fff;box-shadow:0 2px 10px #0003}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;flex-wrap:wrap}
+.top h1{font-size:18px;margin:0;font-weight:700}.top h1 span{color:#8cc0ff;font-weight:500}
+.mini{display:flex;align-items:center;gap:10px;font-size:13px}.bar{width:140px;height:8px;background:#ffffff30;border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:#3ddc97;border-radius:9px;transition:width .5s}
+nav{display:flex;gap:4px;overflow-x:auto;padding:0 14px;scrollbar-width:thin}
+nav button{flex:none;background:none;border:0;color:#b9c9e6;padding:11px 14px;font:inherit;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.2s}
+nav button:hover{color:#fff}nav button.on{color:#fff;border-color:#4da3ff}
+main{max-width:1180px;margin:0 auto;padding:22px 16px 60px;animation:f .3s}
+@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+h2{font-size:24px;margin:4px 0 16px;color:var(--navy)}h3{margin:0 0 8px;font-size:17px}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:#fff}}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.g5{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px #0b244710;transition:.2s}
+.grid .card{margin:0}.card:hover{box-shadow:0 6px 18px #0b244718}
+.st span{color:var(--mut);font-size:13px}.st b{display:block;font-size:28px;color:var(--blue)}.st small{color:var(--mut)}
+.big{font-size:44px;font-weight:800;color:var(--blue);line-height:1}.pb{height:12px;background:var(--gr);border-radius:9px;overflow:hidden;margin:10px 0}.pb i{display:block;height:100%;background:var(--ok);transition:width .5s}
+.alert{background:var(--wnb);border-left:5px solid var(--wn);color:var(--tx);border-radius:10px;padding:12px 16px;margin:0 0 14px}.alert.red{background:var(--badb);border-color:var(--bad)}.alert ul{margin:6px 0 0;padding-left:20px}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;white-space:nowrap}
+.chip.green{background:var(--okb);color:var(--ok)}.chip.yellow{background:var(--wnb);color:var(--wn)}.chip.red{background:var(--badb);color:var(--bad)}.chip.gr{background:var(--gr);color:var(--mut)}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:7px 9px;width:100%;min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--blue);border-color:transparent}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--ok);flex:none}
+.lb{display:block;font-size:12px;color:var(--mut)}.fl{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:10px 0}
+textarea{resize:vertical}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:9px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn.on{background:var(--ok)}.btn.s{background:var(--bl);color:var(--blue)}.btn.d{background:var(--bad)}
+.sh{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.ul{margin:6px 0 12px;padding-left:20px;font-size:14px}.mut,small{color:var(--mut)}
+.row{border:1px solid var(--bd);border-left:5px solid var(--wn);border-radius:12px;padding:12px;margin:0 0 10px;background:var(--card);display:grid;gap:6px}
+.row.ok{border-left-color:var(--ok)}.chk{display:flex;gap:10px;align-items:center;cursor:pointer}
+.row .fl{margin:2px 0}.hd{display:flex;justify-content:space-between;align-items:center;margin:22px 0 10px;flex-wrap:wrap;gap:8px}
+.det{background:var(--bl);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:14px}.det ul{margin:4px 0 0;padding-left:18px}
+.sub{font-weight:700;color:var(--blue);margin:12px 0 4px;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+li.dn{color:var(--ok)}pre{white-space:pre-wrap;font:inherit;font-size:14px;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:12px;margin:8px 0 10px}
+.tl{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd);flex-wrap:wrap}.tl:last-child{border:0}
+textarea.bk{min-height:130px;font-family:ui-monospace,monospace;font-size:12px}.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+footer{text-align:center;color:var(--mut);font-size:12px;padding:0 16px 24px}
+@media(max-width:600px){.top{padding:10px 14px}.bar{width:90px}.big{font-size:36px}h2{font-size:20px}}
+</style></head><body>
+<header><div class="top"><h1>🩺 CBMMA Saúde <span>| Meu Checklist</span></h1><div class="mini"><span id="tpt"></span><div class="bar"><i id="tp"></i></div></div></div><nav id="nav" aria-label="Seções"></nav></header>
+<main id="main"></main>
+<footer>Ferramenta de organização pessoal baseada no Edital nº 1 – CBM/MA (itens 9.2 a 9.7). Não substitui o edital nem atesta aptidão médica. Dados salvos apenas neste navegador.</footer>
+<script>
+"use strict";
+/* ========== DADOS DO EDITAL ========== */
+const SB={sg:'A · Sangue',so:'A · Sorologias',ad:'A · Exame adicional',ur:'B · Urina',fe:'C · Fezes',tx:'D · Exame toxicológico'};
+const TOX=[['Grupo anfetaminas','anfetamina, dietilpropiona (anfepramona), fenproporex e mazindol'],['Grupo canabinoides','11-nor-delta-9-THC ácido carboxílico e THC'],['Grupo cocaína','benzoilecgonina, cocaína, merla, oxi, AEME (crack), cocaetileno e norcocaína'],['Grupo metanfetaminas','metanfetamina, MDA, MDMA, MDEA e MBDB'],['Grupo opiáceos','morfina, codeína, 6-acetilmorfina, 6-acetilcodeína, di-hidrocodeína (hidrocodona) e heroína'],['LSD',''],['Oxicodona',''],['PCP (fenciclidina)','']].map(a=>a[0]+(a[1]?': '+a[1]:''));
+const CL='Laudo descritivo e conclusivo.';
+/* ex: [nome, validade(180|30|60|'6m'|0), nota, subgrupo] */
+const G=[
+{id:'lab',L:'A–D',n:'Exames laboratoriais e complementares',ic:'🧪',req:'Exames de sangue, sorologias, urina, fezes e toxicológico (categoria separada; não é uma especialidade médica).',
+ ex:[...['Hemograma completo (com diferencial e plaquetas)','Glicemia de jejum','Hemoglobina glicada (HbA1c)','Ureia e creatinina','Ácido úrico','Perfil lipídico (LDL, HDL, VLDL e triglicerídeos)','Proteínas totais e frações','Bilirrubinas total e frações','TGO (AST)','TGP (ALT)','Gama GT','TSH','T4 livre'].map(n=>[n,180,'',SB.sg]),
+ ...['Doença de Chagas','Sífilis (VDRL ou equivalente)','Hepatite A (anti-HAV IgM)','Hepatite B (HBsAg, Anti-HBs, HBeAg, Anti-HBe, Anti-HBc IgM/IgG)','Hepatite C (anti-HCV)','Tipagem sanguínea (ABO e fator Rh)'].map(n=>[n,180,'',SB.so]),
+ ['Beta-HCG',30,'Obrigatório para todas as candidatas do sexo feminino; validade máxima de 30 dias.',SB.ad],
+ ['Exame de urina (EAS)',180,'',SB.ur],['Exame parasitológico de fezes (EPF)',180,'',SB.fe],
+ ['Exame toxicológico (queratina)',60,'Coleta em até 60 dias antes da avaliação de saúde.',SB.tx]],
+ det:[['Toxicológico — material e substâncias abrangidas',['Amostras de queratina (cabelos, pelos ou raspas de unhas), doadas pelo candidato.',...TOX]]],
+ al:['Toxicológico: janela de detecção mínima de 90 dias; o laboratório precisa realizar exame de larga janela de detecção.','Resultado positivo para opiáceos: o edital exige receita médica, prontuário médico ou laudo médico que comprove uso terapêutico nos últimos 90 dias.']},
+{id:'car',L:'E',n:'Cardiologia',ic:'🫀',p:'Cardiologista',c:'Consulta com cardiologista',req:'Avaliação clínica cardiológica com anamnese detalhada e exame físico completo, realizada por médico especialista em Cardiologia.',
+ ex:[['Eletrocardiograma (ECG)',180,CL],['Teste ergométrico',180,CL],['Ecocardiograma bidimensional com Doppler',180,'']],al:['O cardiologista deve consignar a análise e a conclusão desses exames, mencionando os respectivos resultados e laudos.']},
+{id:'pne',L:'F',n:'Pneumologia',ic:'🫁',p:'Pneumologista',c:'Consulta com pneumologista',req:'Avaliação clínica pulmonar com anamnese detalhada e exame físico completo, realizada por médico especialista em Pneumologia.',
+ ex:[['Espirometria / prova de função pulmonar com e sem broncodilatador',180,CL],['Radiografia de tórax em PA e perfil esquerdo',180,'Obrigatoriamente avaliando a área cardíaca. '+CL]]},
+{id:'psi',L:'G',n:'Psiquiatria',ic:'💭',p:'Psiquiatra',c:'Consulta com psiquiatra (laudo no modelo do Anexo IV)',req:'Consulta com médico especialista em Psiquiatria e laudo médico descritivo e conclusivo, obrigatoriamente elaborado conforme o modelo do Anexo IV do edital.',ex:[],
+ det:[['O laudo deve abordar expressamente',['Aspectos gerais: aparência, atitude, conduta e comunicação não verbal','Comportamento e atividade psicomotora','Nível de consciência','Atenção e concentração','Orientação alopsíquica e autopsíquica','Sensopercepção','Memória imediata, recente e remota','Inteligência','Expressão emocional: humor e afeto','Pensamento: curso, forma e conteúdo','Juízo da realidade','Linguagem: discurso e fala','Uso de medicamentos psicotrópicos','Histórico de transtornos mentais']]],al:['O laudo psiquiátrico precisa seguir o modelo do Anexo IV do edital.']},
+{id:'odo',L:'H',n:'Odontologia',ic:'🦷',p:'Dentista',c:'Consulta com dentista (laudo odontológico)',req:'Avaliação clínica odontológica completa e laudo odontológico descritivo e conclusivo.',
+ ex:[['Radiografia panorâmica da face','6m','Validade máxima de seis meses; imagem de alta qualidade, nítida e legível; com identificação do candidato e data de realização.']]},
+{id:'neu',L:'I',n:'Neurologia',ic:'🧠',p:'Neurologista',c:'Consulta com neurologista',req:'Avaliação clínica neurológica com anamnese detalhada e exame físico completo, realizada por médico especialista em Neurologia.',ex:[['Eletroencefalograma (EEG)',180,CL]]},
+{id:'oft',L:'J',n:'Oftalmologia',ic:'👁️',p:'Oftalmologista',c:'Consulta com oftalmologista',req:'Avaliação clínica oftalmológica realizada por médico especialista em Oftalmologia.',
+ ex:[['Acuidade visual COM e SEM correção óptica',0,''],['Tonometria',0,''],['Biomicroscopia',0,''],['Fundoscopia',0,''],['Motricidade ocular',0,''],['Senso cromático: teste completo de Ishihara (24 pranchas)',0,''],['Campimetria computadorizada',180,CL],['Topografia de córnea',180,CL],['Retinografia colorida',180,CL]],
+ al:['Ishihara: se houver mais de três erros, o laudo oftalmológico deve descrever o tipo de distúrbio, distinguindo as discromatopsias completas das deficiências de cores, conforme o edital.']},
+{id:'oto',L:'K',n:'Otorrinolaringologia',ic:'👂',p:'Otorrinolaringologista',c:'Consulta com otorrinolaringologista',req:'Avaliação clínica otorrinolaringológica com anamnese detalhada e exame físico completo, realizada por médico especialista em Otorrinolaringologia.',
+ ex:[['Audiometria completa (tonal, vocal e imitanciometria)',180,'']],al:['Candidatos em uso definitivo de Aparelho de Amplificação Sonora Individual (AASI) devem enviar obrigatoriamente audiometria tonal sem e com AASI.']},
+{id:'ort',L:'L',n:'Ortopedia',ic:'🦴',p:'Ortopedista',c:'Consulta com ortopedista',req:'Avaliação clínica ortopédica com anamnese detalhada e exame físico completo, incluindo avaliação da coluna vertebral, articulações e força muscular dos membros superiores e inferiores, realizada por médico especialista em Ortopedia.',
+ ex:[['Radiografia da coluna toracolombar',180,'Projeções AP e P, posição ortostática, alta resolução; laudo descritivo e conclusivo; medida precisa obrigatória do ângulo de Cobb.'],['Radiografia da coluna lombossacra',180,'Projeções AP e P, posição ortostática, alta resolução; laudo descritivo e conclusivo; medidas precisas obrigatórias dos ângulos de Cobb e de Ferguson.']]},
+{id:'abd',L:'M',n:'Abdômen',ic:'🩻',req:'Exame complementar sem especialidade médica obrigatória definida no edital.',ex:[['Ecografia de abdome total',180,'Imagens em alta resolução; laudo descritivo e conclusivo.']]}];
+const FIN=['Todos os exames exigidos foram realizados.','Todos os laudos conclusivos foram recebidos.','Todos os documentos apresentam nome do candidato.','Todos apresentam RG e/ou CPF e órgão emissor.','Todos apresentam assinatura do profissional responsável.','Todos apresentam especialidade e registro profissional.','Os exames estão dentro dos prazos de validade.','Os exames de imagem possuem imagens em alta resolução.','O laudo psiquiátrico segue o modelo do Anexo IV.','O exame toxicológico possui janela mínima de detecção de 90 dias.','O exame odontológico panorâmico está dentro da validade máxima de seis meses.'];
+const VT={180:'180 dias',30:'30 dias',60:'60 dias','6m':'6 meses'};
+const ITEMS=[],ID={};
+G.forEach(g=>{if(g.c)ITEMS.push({id:g.id+'_c',g:g.id,k:'c',nome:g.c,v:0});g.ex.forEach((e,i)=>ITEMS.push({id:g.id+'_'+i,g:g.id,k:'e',nome:e[0],v:e[1],nota:e[2],sub:e[3]}))});
+ITEMS.forEach(x=>ID[x.id]=x);const GI={};G.forEach(g=>GI[g.id]=g);
+/* ========== TEXTOS (ÁREA 4) ========== */
+const HDR='Estou realizando a avaliação de saúde do concurso de Soldado Bombeiro Militar do Maranhão 2026 (Edital nº 1 – CBM/MA).';
+const exL=(a)=>a.map(e=>'- '+e[0]+(e[2]?' — '+e[2]:'')).join('\n');
+const detL=g=>(g.det||[]).map(d=>d[0]+':\n'+d[1].map(l=>'- '+l).join('\n')).join('\n\n');
+const labEx=G[0].ex.filter(e=>e[3]!==SB.tx),txEx=G[0].ex.filter(e=>e[3]===SB.tx);
+const TX=[['Texto geral — para todos os laboratórios',`Estou realizando os exames para a avaliação de saúde do concurso de Soldado Bombeiro Militar do Maranhão 2026. Preciso que todos os exames sejam emitidos com:\n\n1. Meu nome completo.\n2. Número do RG e/ou CPF.\n3. Órgão emissor do documento de identidade.\n4. Assinatura do profissional responsável.\n5. Especialidade do profissional responsável.\n6. Registro no conselho de classe específico.\n7. Laudo conclusivo para cada exame.\n\nCaso seja um exame de imagem ou radiológico, preciso também receber as imagens em alta resolução, além do laudo médico descritivo.\n\nOs exames precisam estar dentro dos prazos de validade estabelecidos no edital.`],
+['Texto geral — para médicos especialistas',`Estou realizando a avaliação de saúde do concurso de Soldado Bombeiro Militar do Maranhão 2026. Preciso que a avaliação e o laudo sigam as exigências do item 9.6 do edital, contendo anamnese, exame físico e todos os elementos específicos exigidos para sua especialidade.\n\nÉ importante que o laudo seja descritivo e conclusivo e que faça referência aos exames complementares, mencionando os respectivos resultados e laudos.`],
+...G.filter(g=>g.c).map(g=>[g.p,[HDR,g.req,g.ex.length?'Exames complementares exigidos:\n'+exL(g.ex):'',detL(g),(g.al||[]).join('\n'),g.ex.length?'O laudo deve ser descritivo e conclusivo e mencionar os resultados e laudos dos exames complementares.':'O laudo deve ser descritivo e conclusivo.'].filter(Boolean).join('\n\n')]),
+['Laboratório de análises clínicas',[HDR,'Exames solicitados:\n'+exL(labEx),'Prazos: realizados em até 180 dias antes da entrega da documentação (Beta-HCG: máximo de 30 dias).','Cada exame deve ter laudo conclusivo.'].join('\n\n')],
+['Laboratório de toxicologia',[HDR,'Exame toxicológico com amostras de queratina (cabelos, pelos ou raspas de unhas), doadas pelo candidato, abrangendo:\n'+TOX.map(t=>'- '+t).join('\n'),'Exigências: exame de larga janela de detecção, com janela mínima de 90 dias; coleta em até 60 dias antes da avaliação de saúde. Em caso de positivo para opiáceos, o edital exige receita, prontuário ou laudo médico que comprove uso terapêutico nos últimos 90 dias.'].join('\n\n')],
+['Clínica de exames de imagem',[HDR,'Preciso das imagens em alta resolução, além do laudo descritivo e conclusivo, dos exames:\n'+['Ecocardiograma bidimensional com Doppler','Radiografia de tórax em PA e perfil esquerdo, avaliando a área cardíaca','Radiografia panorâmica da face — validade máxima de seis meses, imagem nítida e legível, com identificação do candidato e data de realização','Radiografia da coluna toracolombar, AP e P, ortostática — com medida precisa do ângulo de Cobb','Radiografia da coluna lombossacra, AP e P, ortostática — com medidas precisas dos ângulos de Cobb e de Ferguson','Ecografia de abdome total'].map(t=>'- '+t).join('\n'),'Os documentos devem conter nome completo, RG e/ou CPF com órgão emissor, assinatura, especialidade e registro no conselho de classe do profissional.'].join('\n\n')]];
+/* ========== ARMAZENAMENTO ========== */
+const KEY='cbmma_saude_meu_checklist_v1',DEF={entrega:'',fem:true,items:{},final:{}};
+const Store={load(){try{const r=localStorage.getItem(KEY);if(r)return Object.assign({},DEF,JSON.parse(r))}catch(e){}return JSON.parse(JSON.stringify(DEF))},save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}};
+let S=Store.load(),T=0,F=0,clr=0;
+S.items=S.items||{};S.final=S.final||{};
+/* ========== LÓGICA ========== */
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const get=id=>S.items[id]||{},it=id=>S.items[id]||(S.items[id]={});
+const on=x=>x.v!==30||S.fem,act=()=>ITEMS.filter(on),of=g=>ITEMS.filter(x=>x.g===g.id&&on(x));
+const dt0=s=>new Date(s+'T00:00:00'),fd=d=>(d instanceof Date?d.toISOString().slice(0,10):d).split('-').reverse().join('/');
+function expiry(x,s){const r=dt0(s);x.v==='6m'?r.setMonth(r.getMonth()+6):r.setDate(r.getDate()+x.v);return r}
+function validity(x){const s=get(x.id);if(!x.v||!s.dt)return null;if(!S.entrega)return{c:'gr',t:'Defina a data de entrega'};
+ const ent=dt0(S.entrega),ex=expiry(x,s.dt);if(dt0(s.dt)>ent)return{c:'red',t:'Data posterior à entrega'};
+ const left=Math.round((ex-ent)/864e5),warn=x.v==='6m'?15:Math.max(3,Math.round(x.v*.1)),lim=ex.toLocaleDateString('pt-BR');
+ return left<0?{c:'red',t:'Fora do prazo (venceu em '+lim+')'}:left<=warn?{c:'yellow',t:'Próximo do vencimento (até '+lim+')'}:{c:'green',t:'Dentro do prazo (até '+lim+')'}}
+const chip=(c,t)=>`<span class="chip ${c}">${t}</span>`;
+function vchip(x){const s=get(x.id);if(x.k==='c')return s.d?chip('green','Concluído'):s.dt?chip('yellow','Agendado'):chip('gr','Pendente');
+ const v=validity(x);return v?chip(v.c,v.t):x.v?chip('gr','Validade: '+VT[x.v]+(S.entrega?'':' · defina a entrega')):''}
+function stats(){const A=act(),ex=A.filter(x=>x.k==='e'),co=A.filter(x=>x.k==='c'),d=x=>get(x.id).d,l=x=>get(x.id).laudo|0;const sp=G.filter(g=>g.c);
+ const done=A.filter(d).length;return{tot:A.length,done,pct:A.length?Math.round(done/A.length*100):0,prof:co.filter(d).length,profT:co.length,exD:ex.filter(d).length,exT:ex.length,rec:A.filter(x=>l(x)>0).length,conf:A.filter(x=>l(x)===2).length,chk:A.filter(x=>l(x)===1).length,esp:sp.filter(g=>of(g).every(d)).length,espT:sp.length}}
+function upd(){document.querySelectorAll('[data-v]').forEach(e=>e.innerHTML=vchip(ID[e.dataset.v]));const s=stats();$('#tp').style.width=s.pct+'%';$('#tpt').textContent=s.pct+'% concluído'}
+/* ========== COMPONENTES ========== */
+const inp=(id,f,cap,type='text')=>`<label class="lb"><span>${cap}</span><input type="${type}" data-id="${id}" data-f="${f}" value="${esc(get(id)[f])}"></label>`;
+const lsel=id=>`<label class="lb"><span>Status do laudo</span><select data-id="${id}" data-f="laudo">${['Não recebido','Recebido','Conferido'].map((t,i)=>`<option value="${i}"${(get(id).laudo|0)===i?' selected':''}>${t}</option>`).join('')}</select></label>`;
+const obs=id=>`<textarea rows="2" data-id="${id}" data-f="obs" placeholder="Observações" aria-label="Observações">${esc(get(id).obs)}</textarea>`;
+const bar=p=>`<div class="pb"><i style="width:${p}%"></i></div>`;
+/* ========== VIEWS ========== */
+function vGeral(){const s=stats(),A=act();
+ const pend=A.filter(x=>!get(x.id).d).sort((a,b)=>{const p=get(a.id).dt||'9999',q=get(b.id).dt||'9999';return p<q?-1:p>q?1:0}).slice(0,8);
+ const st=(l,v,sub)=>`<div class="card st"><span>${l}</span><b>${v}</b><small>${sub}</small></div>`;
+ return `<h2>Visão Geral</h2>
+<div class="alert"><b>Regras de validade do edital</b><ul><li>Exames laboratoriais e complementares: realizados em até <b>180 dias</b> antes da entrega.</li><li>Beta-HCG: validade máxima de <b>30 dias</b>.</li><li>Toxicológico: realizado em até <b>60 dias</b> antes da entrega, com janela de detecção mínima de <b>90 dias</b>.</li><li>Radiografia panorâmica odontológica: validade máxima de <b>seis meses</b>.</li></ul></div>
+<div class="card"><h3>Progresso geral</h3><div class="big">${s.pct}%</div>${bar(s.pct)}<small>${s.done} de ${s.tot} itens concluídos (consultas + exames) · ${s.esp} de ${s.espT} especialidades concluídas · ${s.exT-s.exD} exames pendentes · ${s.chk} documentos aguardando conferência</small></div>
+<div class="grid g5" style="margin-bottom:14px">${st('Profissionais visitados',s.prof+'/'+s.profT,'consultas realizadas')}${st('Exames realizados',s.exD+'/'+s.exT,'marcados como concluídos')}${st('Laudos recebidos',s.rec,'recebidos ou conferidos')}${st('Exames pendentes',s.exT-s.exD,'ainda a realizar')}${st('Documentos conferidos',s.conf,s.chk+' a conferir')}</div>
+<div class="card"><h3>Configurações</h3><div class="fl">${`<label class="lb"><span>Data de entrega da documentação (definida no edital de convocação)</span><input type="date" data-f="entrega" value="${esc(S.entrega)}"></label>`}<label class="chk" style="align-self:end"><input type="checkbox" data-f="fem"${S.fem?' checked':''}> Candidata do sexo feminino (exige Beta-HCG)</label></div><small>Os prazos de validade são contados a partir da data de entrega informada, não da data de hoje.</small></div>
+<div class="card"><h3>Próximas tarefas</h3>${pend.length?pend.map(x=>`<div class="tl"><span>${GI[x.g].ic} <b>${esc(GI[x.g].n)}</b> — ${esc(x.nome)} ${get(x.id).dt?chip('yellow','Data: '+fd(get(x.id).dt)):''}</span><button class="btn s" data-act="goto" data-v="4">Abrir</button></div>`).join(''):'<p>🎉 Nenhuma tarefa pendente.</p>'}</div>
+<div class="card"><h3>Dados e backup</h3><small>Os dados ficam salvos no navegador (LocalStorage). Gere um backup JSON, copie ou baixe, e cole aqui para importar.</small>
+<textarea class="bk" id="bk" placeholder="O backup JSON aparece aqui; cole um backup para importar."></textarea><div class="acts"><button class="btn" data-act="exp">Exportar JSON</button><button class="btn s" data-act="dl">Baixar arquivo</button><button class="btn s" data-act="imp">Importar do texto</button><label class="btn s">Importar arquivo<input type="file" id="fi" accept=".json,application/json" hidden></label><button class="btn d" data-act="clr">Limpar todos os dados</button></div><small id="bkm"></small></div>`}
+function pcard(g){const c=ID[g.id+'_c'],A=of(g),ex=A.filter(x=>x.k==='e');
+ if(!c)return `<article class="card"><h3>${g.ic} ${g.n}</h3><p class="mut">Categoria separada: não é uma especialidade médica.</p><ul class="ul">${ex.map(x=>`<li${get(x.id).d?' class="dn"':''}>${esc(x.nome)}</li>`).join('')}</ul><small>${ex.filter(x=>get(x.id).d).length}/${ex.length} concluídos</small><div class="acts"><button class="btn s" data-act="goto" data-v="4">Abrir no checklist</button></div></article>`;
+ const s=get(c.id);return `<article class="card"><div class="sh"><h3>${g.ic} ${g.n}</h3><span data-v="${c.id}">${vchip(c)}</span></div><ul class="ul">${ex.map(x=>`<li${get(x.id).d?' class="dn"':''}>${esc(x.nome)}</li>`).join('')||'<li>Laudo descritivo e conclusivo (modelo do Anexo IV)</li>'}</ul>
+<button class="btn${s.d?' on':''}" data-act="visit" data-id="${c.id}">${s.d?'✔ Profissional visitado (desmarcar)':'Marcar profissional como visitado'}</button>
+<div class="fl">${inp(c.id,'prof','Nome do profissional')}${inp(c.id,'who','Clínica ou hospital')}${inp(c.id,'dt','Data da consulta','date')}</div>${obs(c.id)}</article>`}
+const vProf=()=>`<h2>Profissionais de Saúde</h2><div class="grid">${G.filter(g=>g.id!=='abd').map(pcard).join('')}</div><p class="mut">A consulta não substitui os exames complementares: cada exame é marcado separadamente na aba “Meus Exames”.</p>`;
+function ecard(g){let last,h='';ITEMS.filter(x=>x.g===g.id&&x.k==='e').forEach(x=>{
+ if(x.sub&&x.sub!==last){if(last)h+='</ul>';h+=`<div class="sub">${x.sub}</div><ul class="ul">`;last=x.sub}else if(!x.sub&&last===undefined){h+='<ul class="ul">';last=''}
+ const d=get(x.id).d;h+=`<li${d?' class="dn"':''}>${d?'✔ ':''}${esc(x.nome)}${x.nota?` <small>— ${esc(x.nota)}</small>`:''} ${x.v?chip('gr',VT[x.v]):''}</li>`});
+ if(last!==undefined)h+='</ul>';
+ return `<article class="card"><h3>${g.L} · ${g.ic} ${g.n}</h3><p>${esc(g.req)}</p>${g.c?'<span class="chip gr">Avaliação clínica ≠ exames complementares</span>':''}${h}${(g.det||[]).map(d=>`<div class="det"><b>${d[0]}</b><ul>${d[1].map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('')}${(g.al||[]).map(a=>`<div class="alert">⚠ ${esc(a)}</div>`).join('')}</article>`}
+const vEx=()=>`<h2>Exames por Especialidade</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">${G.map(ecard).join('')}</div>`;
+const vOri=()=>`<h2>O que preciso informar aos médicos e laboratórios?</h2><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">${TX.map((t,i)=>`<article class="card"><h3>${esc(t[0])}</h3><pre>${esc(t[1])}</pre><button class="btn" data-act="copy" data-i="${i}">Copiar</button></article>`).join('')}</div>`;
+function row(x){const s=get(x.id),c=x.k==='c';return `<div class="row${s.d?' ok':''}"><div class="sh"><label class="chk"><input type="checkbox" data-f="d" data-id="${x.id}"${s.d?' checked':''}><b>${esc(x.nome)}</b></label><span data-v="${x.id}">${vchip(x)}</span></div>${x.nota?`<small>${esc(x.nota)}</small>`:''}<div class="fl">${c?inp(x.id,'prof','Profissional'):''}${inp(x.id,'who',c?'Clínica ou hospital':'Clínica ou profissional')}${inp(x.id,'dt',c?'Data da consulta':'Data de realização','date')}${lsel(x.id)}</div>${obs(x.id)}</div>`}
+function vChk(){const s=stats();return `<h2>Meus Exames / Checklist</h2><div class="acts"><button class="btn${F?' s':''}" data-act="filt" data-v="0">Todos (${s.tot})</button><button class="btn${F?'':' s'}" data-act="filt" data-v="1">Pendentes (${s.tot-s.done})</button></div>`+
+ G.map(g=>{let A=of(g);const d=A.filter(x=>get(x.id).d).length;if(F)A=A.filter(x=>!get(x.id).d);return `<div class="hd"><h3>${g.ic} ${g.n}</h3><span class="chip ${d===of(g).length?'green':'gr'}">${d}/${of(g).length} concluídos</span></div>${A.map(row).join('')||'<p class="mut">✔ Nada pendente.</p>'}`}).join('')}
+function vFinal(){const A=act(),n=FIN.filter((_,i)=>S.final[i]).length,p=Math.round(n/FIN.length*100),rd=x=>validity(x)?.c;
+ const li=[['Itens ainda não concluídos',A.filter(x=>!get(x.id).d).length],['Laudos ainda não conferidos',A.filter(x=>(get(x.id).laudo|0)<2).length],['Exames fora do prazo',A.filter(x=>rd(x)==='red').length],['Exames próximos do vencimento',A.filter(x=>rd(x)==='yellow').length],['Exames concluídos sem data registrada',A.filter(x=>x.v&&get(x.id).d&&!get(x.id).dt).length]];
+ return `<h2>Conferência Final</h2><div class="alert red"><b>Atenção:</b> esta ferramenta serve apenas para organização e conferência documental. Concluir os checklists não significa que você está apto na avaliação médica.</div>
+<div class="card"><h3>Prontidão documental</h3><div class="big">${p}%</div>${bar(p)}<small>${n} de ${FIN.length} itens de conferência marcados</small><div style="margin-top:10px">${li.map(l=>`<div class="tl"><span>${l[0]}</span>${chip(l[1]?'yellow':'green',l[1])}</div>`).join('')}</div></div>
+<div class="card"><h3>Itens de conferência</h3>${FIN.map((t,i)=>`<div class="tl"><label class="chk"><input type="checkbox" data-f="fin" data-k="${i}"${S.final[i]?' checked':''}> ${t}</label></div>`).join('')}</div>`}
+const VIEWS=[vGeral,vProf,vEx,vOri,vChk,vFinal],TABS=['Visão Geral','Profissionais de Saúde','Exames por Especialidade','Orientações para Consultas e Laboratórios','Meus Exames / Checklist','Conferência Final'];
+function render(){$('#nav').innerHTML=TABS.map((t,i)=>`<button class="${i===T?'on':''}" data-act="tab" data-v="${i}">${t}</button>`).join('');$('#main').innerHTML=VIEWS[T]();upd()}
+/* ========== EVENTOS ========== */
+const commit=r=>{Store.save();r?render():upd()};
+document.addEventListener('input',e=>{const t=e.target,f=t.dataset.f;if(!f||t.type==='checkbox'||t.tagName==='SELECT')return;
+ if(t.dataset.id)it(t.dataset.id)[f]=t.value;else S[f]=t.value;commit(false)});
+document.addEventListener('change',e=>{const t=e.target,f=t.dataset.f;
+ if(t.id==='fi'&&t.files[0]){const r=new FileReader();r.onload=()=>{$('#bk').value=r.result;doImport()};r.readAsText(t.files[0]);return}
+ if(!f||!(t.type==='checkbox'||t.tagName==='SELECT'))return;const v=t.type==='checkbox'?t.checked:+t.value;
+ if(f==='fin')S.final[t.dataset.k]=v;else if(t.dataset.id)it(t.dataset.id)[f]=v;else S[f]=v;commit(true)});
+async function copy(txt,b){try{await navigator.clipboard.writeText(txt)}catch(e){const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(_){}a.remove()}
+ const o=b.textContent;b.textContent='Copiado ✓';setTimeout(()=>b.textContent=o,1600)}
+const msg=t=>{const m=$('#bkm');if(m)m.textContent=t};
+function json(){return JSON.stringify({app:'cbmma-saude-checklist',versao:1,data:S},null,2)}
+function doImport(){try{const o=JSON.parse($('#bk').value),d=o.data||o;if(!d||typeof d!=='object'||!d.items)throw 0;S=Object.assign({},DEF,d);S.final=S.final||{};Store.save();render();msg('Backup importado com sucesso.')}catch(e){msg('JSON inválido: nada foi alterado.')}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act;
+ if(a==='tab'){T=+b.dataset.v;render();scrollTo(0,0)}
+ else if(a==='goto'){T=+b.dataset.v;render();scrollTo(0,0)}
+ else if(a==='visit'){const s=it(b.dataset.id);s.d=!s.d;commit(true)}
+ else if(a==='filt'){F=+b.dataset.v;render()}
+ else if(a==='copy')copy(TX[+b.dataset.i][1],b)
+ else if(a==='exp'){$('#bk').value=json();$('#bk').select();copy(json(),b);msg('Backup gerado (copiado para a área de transferência). Guarde este texto em um arquivo seguro.')}
+ else if(a==='dl'){try{const u=URL.createObjectURL(new Blob([json()],{type:'application/json'})),l=document.createElement('a');l.href=u;l.download='cbmma-saude-backup.json';l.click();$('#bk').value=json();msg('Se o download não iniciar neste ambiente, copie o texto acima e salve em um arquivo .json.')}catch(_){$('#bk').value=json();msg('Copie o texto acima e salve em um arquivo .json.')}}
+ else if(a==='imp')doImport()
+ else if(a==='clr'){if(!clr){clr=1;b.textContent='Clique de novo para confirmar a exclusão';setTimeout(()=>{clr=0;b.textContent='Limpar todos os dados'},5000)}else{clr=0;S=JSON.parse(JSON.stringify(DEF));try{localStorage.removeItem(KEY)}catch(_){}render()}}});
+render();
+</script></body></html>
